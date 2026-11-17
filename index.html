@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Secure Notes</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Secure Notes</h1>
+        <p>Private notes and public posts.</p>
+        <p id="identity">Not signed in</p>
+        <button id="logout" hidden>Sign out</button>
+      </header>
+      <p id="status" role="status" aria-live="polite"></p>
+      <section id="auth">
+        <h2>Account</h2>
+        <form id="login">
+          <h3>Sign in</h3>
+          <label
+            >Email<input
+              name="email"
+              type="email"
+              required
+              autocomplete="username" /></label
+          ><label
+            >Password<input
+              name="password"
+              type="password"
+              required
+              autocomplete="current-password" /></label
+          ><button>Sign in</button>
+        </form>
+        <form id="register">
+          <h3>Register</h3>
+          <label
+            >Name<input
+              name="name"
+              required
+              maxlength="100"
+              autocomplete="name" /></label
+          ><label
+            >Email<input
+              name="email"
+              type="email"
+              required
+              autocomplete="email" /></label
+          ><label
+            >Password<input
+              name="password"
+              type="password"
+              minlength="8"
+              required
+              autocomplete="new-password" /></label
+          ><label
+            >Interests, separated by commas<input
+              name="interests"
+              placeholder="chess, reading" /></label
+          ><button>Create account</button>
+        </form>
+      </section>
+      <section id="notes" hidden>
+        <h2>Notes</h2>
+        <form id="note-form">
+          <input name="id" type="hidden" /><label
+            >Title<input name="title" required maxlength="200" /></label
+          ><label
+            >Content<textarea
+              name="content"
+              required
+              maxlength="50000"
+            ></textarea></label
+          ><button>Save note</button
+          ><button id="cancel-note" type="button">Clear</button>
+        </form>
+        <div id="note-list"></div>
+        <div id="note-pager"></div>
+      </section>
+      <section>
+        <h2>Public posts</h2>
+        <form id="post-form" hidden>
+          <label>Title<input name="title" required maxlength="200" /></label
+          ><label
+            >Content<textarea
+              name="content"
+              required
+              maxlength="50000"
+            ></textarea></label
+          ><button>Publish post</button>
+        </form>
+        <form id="post-filter">
+          <label
+            >User ID (optional)<input
+              name="userId"
+              pattern="[a-fA-F0-9]{24}" /></label
+          ><button>Show posts</button>
+        </form>
+        <div id="post-list"></div>
+        <div id="post-pager"></div>
+      </section>
+      <section id="admin" hidden>
+        <h2>Admin: users</h2>
+        <form id="user-form">
+          <input name="id" type="hidden" /><label
+            >Name<input name="name" required maxlength="100" /></label
+          ><label>Email<input name="email" type="email" required /></label
+          ><label
+            >Password (leave blank when editing to keep current password)<input
+              name="password"
+              type="password"
+              minlength="8"
+              autocomplete="new-password" /></label
+          ><label
+            >Role<select name="role">
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select></label
+          ><label
+            >Interests, separated by commas<input name="interests" /></label
+          ><button>Save user</button
+          ><button id="cancel-user" type="button">Clear</button>
+        </form>
+        <form id="user-filter">
+          <label>Filter by interest<input name="interest" /></label
+          ><button>Filter users</button>
+        </form>
+        <div id="user-list"></div>
+        <div id="user-pager"></div>
+        <h2>Users grouped by interest</h2>
+        <form id="group-filter">
+          <label>Interest (optional)<input name="interest" /></label
+          ><button>Load groups</button>
+        </form>
+        <div id="group-list"></div>
+        <div id="group-pager"></div>
+      </section>
+    </main>
+    <script src="/config.js" defer></script>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
