@@ -6,6 +6,10 @@ note CRUD, public posts, and role-based admin views.
 
 Backend source: https://github.com/tonmoybiswas07/securenotes
 
+Live frontend: https://securenotes-frontend-liard.vercel.app
+
+Live API: https://securenotes-api-rho.vercel.app
+
 ## Local development
 
 Requires Node.js 24. Start the backend separately on port 5001, then:
